@@ -1,0 +1,11 @@
+services:
+  server:
+    entrypoint: bun
+    command: test
+
+  dashboard:
+    entrypoint: npm
+    command: test 
+  # db:
+  #   logging:
+  #         driver: none           

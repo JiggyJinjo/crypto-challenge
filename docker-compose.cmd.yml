@@ -1,0 +1,23 @@
+include:
+  - docker-compose.yml
+services:
+  server:
+    build:
+      context: ./
+      dockerfile: ./packages/server/Dockerfile
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_DB=tocos-exchange
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5000:5000
+      - 4040:4040
+  dashboard:
+    build:
+      context: ./
+      dockerfile: ./packages/dashboard/Dockerfile
+    ports:
+      - 3000:3000
